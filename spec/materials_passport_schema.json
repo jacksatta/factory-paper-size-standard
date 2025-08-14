@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FPSS Materials Passport v0.1",
+  "type": "object",
+  "required": [
+    "part_number",
+    "materials",
+    "recyclability"
+  ],
+  "properties": {
+    "part_number": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "mass_g"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "mass_g": {
+            "type": "number"
+          },
+          "source": {
+            "type": "string"
+          },
+          "recycled_pct": {
+            "type": "number"
+          },
+          "hazard_notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recyclability": {
+      "type": "string",
+      "enum": [
+        "closed_loop",
+        "open_loop",
+        "downcycle",
+        "unknown"
+      ]
+    },
+    "co2e_estimate_kg": {
+      "type": "number"
+    },
+    "end_of_life_notes": {
+      "type": "string"
+    }
+  }
+}

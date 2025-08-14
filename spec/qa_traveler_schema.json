@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FPSS QA Traveler v0.1",
+  "type": "object",
+  "required": [
+    "serial",
+    "job_uuid",
+    "results"
+  ],
+  "properties": {
+    "serial": {
+      "type": "string"
+    },
+    "job_uuid": {
+      "type": "string"
+    },
+    "station_logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "station": {
+            "type": "string"
+          },
+          "start_ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metrics": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "calibration": {
+      "type": "object"
+    },
+    "results": {
+      "type": "object",
+      "properties": {
+        "pass": {
+          "type": "boolean"
+        },
+        "metrics": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

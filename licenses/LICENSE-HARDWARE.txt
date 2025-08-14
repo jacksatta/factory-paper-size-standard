@@ -1,0 +1,2 @@
+The /reference_designs directory is licensed under the CERN Open Hardware License Strongly Reciprocal v2.
+You may use, modify, and manufacture; distribute source of modifications per license.

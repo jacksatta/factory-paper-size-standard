@@ -7,9 +7,24 @@
 | **Human** | 6×2.4×2.6 m (20ft container) | ≤ A1 (594×841 mm) | ±50 µm | ISO cartridge standard (granules, sheet feed, wire spools) | 400V 3-phase AC + 48V DC bus | OPC-UA full + REST API       |
 | **Macro** | 20×20×10 m        | ≤ A0×8 (3.36×4.76 m) | ±200 µm      | Bulk hopper/tanker feeds     | 400V+ AC + HV DC bus      | OPC-UA macro profile         |
 
----
+## Station Profiles (v0.1)
 
-**Key principles:**
-- **Scaling ratio** between classes: ~√2 in linear dimension (like ISO paper sizes).
-- **Material cartridges** are standardized for each class but compatible across classes where feasible.
-- **Data protocol** is OPC-UA with extensions for job packet metadata and materials passport.
+Each station advertises:
+- `envelope_mm` (X,Y,Z)
+- `accuracy_um`, `repeatability_um`
+- `processes` (e.g., fdm, cnc-mill-3axis, pickplace, reflow, scan-3d, torque, vision-apriltag)
+- `energy_profile` (dc48v, ac120v, ac240v, ac3p-400v)
+- `materials_supported` (e.g., PLA, PETG, PA-GF, Al-6061)
+- `throughput_hint` (units/hr)
+
+Minimum required profiles (Human‑scale):
+- **Printer‑A1:** FDM pellet/filament, 300×300×300, ±100 µm
+- **CNC‑A1:** 400×400×60, ±50 µm, Al‑6061, plastics
+- **Arm‑A1:** 5 kg payload, 800 mm reach, repeatability ≤ 0.2 mm
+- **QA‑Scan‑A1:** structured‑light ≤ 0.35 mm deviation
+- **Torque‑A1:** 0.5–4 N·m with torque‑angle logging
+
+## File Types
+- **Job Packet:** `.fpj` (JSON; see schema)
+- **QA Traveler:** `.fqt` (JSON; see schema)
+- **Materials Passport:** `.fpm` (JSON; see schema)

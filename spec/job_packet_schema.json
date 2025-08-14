@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FPSS Job Packet v0.1",
+  "type": "object",
+  "required": [
+    "uuid",
+    "target_class",
+    "materials",
+    "process_plan",
+    "qa_plan"
+  ],
+  "properties": {
+    "uuid": {
+      "type": "string"
+    },
+    "target_class": {
+      "type": "string",
+      "enum": [
+        "Nano",
+        "Micro",
+        "Human",
+        "Macro"
+      ]
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "step": {
+          "type": "string"
+        },
+        "stl": {
+          "type": "string"
+        }
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "process_plan": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    },
+    "qa_plan": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/qa"
+      }
+    },
+    "energy_hint": {
+      "type": "string",
+      "enum": [
+        "solar_peak",
+        "off_peak",
+        "any"
+      ]
+    },
+    "passport": {
+      "$ref": "#/$defs/passport"
+    }
+  },
+  "$defs": {
+    "material": {
+      "type": "object",
+      "required": [
+        "name",
+        "form",
+        "qty"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "form": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "number"
+        },
+        "recycled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": [
+        "station",
+        "op",
+        "params"
+      ],
+      "properties": {
+        "station": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object"
+        }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "required": [
+        "metric",
+        "limit"
+      ],
+      "properties": {
+        "metric": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "number"
+        }
+      }
+    },
+    "passport": {
+      "type": "object",
+      "properties": {
+        "co2e_estimate": {
+          "type": "number"
+        },
+        "source": {
+          "type": "string"
+        },
+        "recyclability": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

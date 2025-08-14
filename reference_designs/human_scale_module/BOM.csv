@@ -1,0 +1,13 @@
+Category,Item,Spec,Qty,Notes
+Structure,8020 T-slot extrusion,40x40 mm,20,Frame & mounts
+Printer,Large FDM printer,300x300x300 build,1,0.6 mm nozzle
+CNC,Desktop 3-axis router,>=400x400x60 work area,1,Al-6061 capable
+Robot,6-axis arm,>=5 kg payload,1,Alt: XY gantry kit
+Tool,Electric screwdriver,Torque-angle 0.5–4 N·m,1,With controller
+QA,Structured-light scanner,0.35 mm max dev,1,Open or commercial
+Conveyor,Mini belt + bins,Small parts kitting,1,
+Label,QR label printer,Label trays & parts,1,
+Power,48 V DC supply/bus,1–2 kW,1,DC distribution
+Safety,E-stop buttons,Panel mount,2,
+Safety,Light curtain or area scanner,Robot bay,1,
+Misc,Industrial PC,8 GB RAM,1,OPC-UA + orchestration

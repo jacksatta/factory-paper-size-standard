@@ -1,0 +1,42 @@
+{
+  "uuid": "demo-0001",
+  "target_class": "Human",
+  "geometry": {
+    "stl": "demos/demo_bracket.stl"
+  },
+  "materials": [
+    {
+      "name": "PETG",
+      "form": "filament",
+      "qty": 120
+    }
+  ],
+  "process_plan": [
+    {
+      "station": "Printer-A1",
+      "op": "fdm-print",
+      "params": {
+        "file": "demos/demo_bracket.gcode"
+      }
+    },
+    {
+      "station": "QA-Scan-A1",
+      "op": "scan",
+      "params": {
+        "target": "demo_bracket"
+      }
+    }
+  ],
+  "qa_plan": [
+    {
+      "metric": "scan_max_dev_mm",
+      "limit": 0.5
+    }
+  ],
+  "energy_hint": "solar_peak",
+  "passport": {
+    "co2e_estimate": 0.05,
+    "source": "generic",
+    "recyclability": "open_loop"
+  }
+}
