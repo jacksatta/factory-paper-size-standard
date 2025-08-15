@@ -97,7 +97,19 @@
       <button id="btn-export-qa" class="btn">EXPORT QA JSON</button>
       <pre id="qa-output" class="logs"></pre>
     </section>
-  </main>
+  
+  <div id="modal-defaults" class="modal" role="dialog" aria-modal="true" aria-labelledby="defaults-title">
+    <div class="panel">
+      <header><h3 id="defaults-title">Edit Defaults</h3><button class="btn" id="close-defaults">Close</button></header>
+      <div class="row"><label>Profile<select id="def-profile" class="input"><option>HUMAN</option><option>MICRO</option><option>MACRO</option></select></label></div>
+      <div class="row"><label>Energy<input id="def-energy" class="input" value="solar_peak"/></label></div>
+      <div class="row"><label>Material<input id="def-material" class="input" value="PETG"/></label></div>
+      <div class="row"><label>QA threshold<input id="def-qa" class="input" value="scan_max_dev ≤ 0.5mm"/></label></div>
+      <div class="actions"><button id="save-defaults" class="btn primary">SAVE</button></div>
+    </div>
+  </div>
+
+</main>
 
   <footer class="footer">FPSS UI v1.1 — responsive, keyboard shortcuts, import, run/stop, jobs & materials.</footer>
 

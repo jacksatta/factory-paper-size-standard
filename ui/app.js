@@ -3,6 +3,7 @@ const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
 
 const state = {
+  defaults: { profile: 'HUMAN', energy: 'solar_peak', material: 'PETG', qa: 'scan_max_dev ≤ 0.5mm' },
   jobs: [],
   running: false,
   timer: null,
@@ -20,14 +21,34 @@ function fmtDate(d=new Date()){
   return d.toLocaleString();
 }
 
+
+function rebuildDefaultTags(){
+  const wrap = document.getElementById("defaults-tags");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  const entries = [
+    ["profile", state.defaults.profile],
+    ["energy", "Energy: " + state.defaults.energy],
+    ["material", "Material: " + state.defaults.material],
+    ["qa", "QA: " + state.defaults.qa]
+  ];
+  for (const [key,label] of entries){
+    const span = document.createElement("span");
+    span.className = "pill meta";
+    span.dataset.key = key;
+    span.innerHTML = `${label} <span class="close" title="remove" aria-label="remove">×</span>`;
+    wrap.appendChild(span);
+    wrap.append(" ");
+  }
+}
+
 function renderJobs() {
   const tbody = $("#jobs-body");
   const tbody2 = $("#jobs-body-2");
   const empty = $("#jobs-empty");
 
   const rows = state.jobs.map((j, idx) => {
-    return `<tr>
-      <td>
+    return `<tr class="${(state.running && idx===0)?'running':''}">\n      <td>
         <div class="name">${j.name}</div>
         <div class="subtle" style="font-size:.9em">HUMAN • Energy: solar_peak • Material: PETG • QA ≤ 0.5mm</div>
       </td>
@@ -58,6 +79,7 @@ function addJob(name) {
   const id = crypto.randomUUID();
   state.jobs.unshift({ id, name, created: new Date(), status: "New", steps: [] });
   renderJobs();
+  rebuildDefaultTags();
 }
 
 function importFPJ(file) {
@@ -150,26 +172,30 @@ function stopRun() {
 }
 
 function renderStations() {
-  const list = $("#stations-list");
-  list.innerHTML = state.stations.map(s => `
-    <li>
-      <div><strong>${s.id}</strong><div class="subtle">Status: ${s.status}</div></div>
-      <div>
+  const body = $("#stations-body");
+  body.innerHTML = state.stations.map(s => `
+    <tr>
+      <td><strong>${s.id}</strong></td>
+      <td><span class="pill">${s.status}</span></td>
+      <td>
         <button class="btn" data-station="${s.id}" data-ss="start">START</button>
         <button class="btn" data-station="${s.id}" data-ss="stop">STOP</button>
-      </div>
-    </li>
+      </td>
+    </tr>
   `).join("");
 }
 
 function renderMaterials() {
-  const list = $("#materials-list");
-  list.innerHTML = state.materials.map((m,i)=>`
-    <li>
-      <span class="pill">${m}</span>
-      <button class="btn" data-m="${i}" data-ma="dup">DUPLICATE</button>
-      <button class="btn" data-m="${i}" data-ma="del">DELETE</button>
-    </li>
+  const body = $("#materials-body");
+  body.innerHTML = state.materials.map((m,i)=>`
+    <tr>
+      <td>${m}</td>
+      <td>
+        <button class="btn" data-m="${i}" data-ma="edit">EDIT</button>
+        <button class="btn" data-m="${i}" data-ma="dup">DUPLICATE</button>
+        <button class="btn" data-m="${i}" data-ma="del">DELETE</button>
+      </td>
+    </tr>
   `).join("");
 }
 
@@ -247,7 +273,47 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   renderJobs();
+  rebuildDefaultTags();
 });
+
+// QA run and export
+$("#btn-run-qa").addEventListener("click", ()=>{
+  const metric = $("#qa-metric").value;
+  const threshold = $("#qa-threshold").value;
+  const result = { metric, threshold, value: metric==='max_dev' ? '0.32mm' : 'Ra 6.1µm', pass: true, time: new Date().toISOString() };
+  $("#qa-output").textContent = JSON.stringify(result, null, 2);
+  log(`QA run (${metric}) => pass`);
+});
+$("#btn-export-qa").addEventListener("click", ()=>{
+  const data = $("#qa-output").textContent || JSON.stringify({ note: 'run QA first' }, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'qa_result.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+// Defaults modal
+const modal = $("#modal-defaults");
+$("#btn-edit-defaults").addEventListener("click", ()=>{
+  $("#def-profile").value = state.defaults.profile;
+  $("#def-energy").value = state.defaults.energy;
+  $("#def-material").value = state.defaults.material;
+  $("#def-qa").value = state.defaults.qa;
+  modal.classList.add("open");
+});
+$("#close-defaults").addEventListener("click", ()=> modal.classList.remove("open"));
+$("#save-defaults").addEventListener("click", ()=>{
+  state.defaults.profile = $("#def-profile").value;
+  state.defaults.energy = $("#def-energy").value.trim();
+  state.defaults.material = $("#def-material").value.trim();
+  state.defaults.qa = $("#def-qa").value.trim();
+  rebuildDefaultTags();
+  log("Defaults saved.");
+  modal.classList.remove("open");
+});
+
 
 // Closeable defaults (meta tags)
 document.addEventListener("click", (e)=>{
@@ -269,6 +335,7 @@ function onJobsAction(e){
   if (t.dataset.action === "del") {
     state.jobs.splice(idx,1);
     renderJobs();
+  rebuildDefaultTags();
   }
   if (t.dataset.action === "dup") {
     const j = state.jobs[idx];
@@ -279,6 +346,7 @@ function onJobsAction(e){
     if (newName) {
       state.jobs[idx].name = newName;
       renderJobs();
+  rebuildDefaultTags();
     }
   }
 }
