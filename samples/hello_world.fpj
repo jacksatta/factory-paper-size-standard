@@ -1,4 +1,22 @@
 {
   "name": "Hello World",
-  "steps": []
+  "steps": [
+    {
+      "target": "station/Printer-A1",
+      "command": "start",
+      "params": {
+        "speed": "normal"
+      }
+    },
+    {
+      "target": "station/Arm-A1",
+      "command": "home",
+      "params": {}
+    },
+    {
+      "target": "station/Printer-A1",
+      "command": "stop",
+      "params": {}
+    }
+  ]
 }

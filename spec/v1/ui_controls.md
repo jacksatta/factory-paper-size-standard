@@ -1,1 +1,1 @@
-# UI Controls — CPS‑1 (3×3)
+# UI Controls — CPS‑1

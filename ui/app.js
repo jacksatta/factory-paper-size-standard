@@ -1,1 +1,1 @@
-console.log('FPSS UI v1.2 full bundle');
+console.log('UI template loaded');
