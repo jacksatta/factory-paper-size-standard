@@ -100,21 +100,53 @@ function tick() {
   $("#progress-bar").style.width = state.progress + "%";
 }
 
+
+// --- Enhanced Hello World storyboard ---
+function storyboardHelloWorld() {
+  const script = [
+    { t: 0,   msg: "Simulation started." },
+    { t: 600, msg: "Loading job plan (micro‑factory Hello World)..." },
+    { t: 1400, msg: "Homing robotic arm..." },
+    { t: 2400, msg: "Heating extruder & bed (simulated)..." },
+    { t: 3600, msg: "Printing test coupon (A5 scale)..." },
+    { t: 6200, msg: "Cooling & part release..." },
+    { t: 7600, msg: "QA: scanning part..." },
+    { t: 8800, msg: "QA: pass (max dev 0.32mm ≤ 0.50mm)" },
+    { t: 9800, msg: "Simulation completed." }
+  ];
+  // Tie progress to final timestamp
+  const total = script[script.length - 1].t;
+  state.progress = 0;
+  $("#progress-bar").style.width = "0%";
+  setRunning(true);
+  const t0 = Date.now();
+  // Schedule messages
+  script.forEach(step => {
+    setTimeout(() => {
+      log(step.msg);
+      const pct = Math.min(100, Math.round((step.t / total) * 100));
+      state.progress = pct;
+      $("#progress-bar").style.width = pct + "%";
+      if (step.msg.includes("completed")) {
+        setRunning(false);
+      }
+    }, step.t);
+  });
+}
+
 function startRun() {
   if (!state.jobs.length) {
     addJob("Untitled job");
   }
-  state.progress = 0;
-  $("#progress-bar").style.width = "0%";
-  setRunning(true);
-  log("Simulation started.");
-  state.timer = setInterval(tick, 350);
+  storyboardHelloWorld();
 }
 
 function stopRun() {
   clearInterval(state.timer);
   setRunning(false);
   log("Simulation stopped.");
+  state.progress = 0;
+  $("#progress-bar").style.width = "0%";
 }
 
 function renderStations() {
