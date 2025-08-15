@@ -173,11 +173,12 @@ function stopRun() {
 
 function renderStations() {
   const body = $("#stations-body");
+  if (!body) return;
   body.innerHTML = state.stations.map(s => `
     <tr>
       <td><strong>${s.id}</strong></td>
       <td><span class="pill">${s.status}</span></td>
-      <td>
+      <td class="actions">
         <button class="btn" data-station="${s.id}" data-ss="start">START</button>
         <button class="btn" data-station="${s.id}" data-ss="stop">STOP</button>
       </td>
@@ -187,10 +188,12 @@ function renderStations() {
 
 function renderMaterials() {
   const body = $("#materials-body");
+  if (!body) return;
   body.innerHTML = state.materials.map((m,i)=>`
     <tr>
-      <td>${m}</td>
-      <td>
+      <td>${m.name}</td>
+      <td>${m.qty||''}</td>
+      <td class="actions">
         <button class="btn" data-m="${i}" data-ma="edit">EDIT</button>
         <button class="btn" data-m="${i}" data-ma="dup">DUPLICATE</button>
         <button class="btn" data-m="${i}" data-ma="del">DELETE</button>
@@ -263,7 +266,7 @@ window.addEventListener("DOMContentLoaded", () => {
   $("#view-materials").addEventListener("click", (e)=>{
     const t = e.target;
     if (t.dataset.ma === "dup") {
-      state.materials.splice(Number(t.dataset.m)+1, 0, state.materials[Number(t.dataset.m)]+" copy");
+      const i = Number(t.dataset.m); state.materials.splice(i+1, 0, {name: state.materials[i].name+' copy', qty: state.materials[i].qty});
       renderMaterials();
     }
     if (t.dataset.ma === "del") {
@@ -350,3 +353,20 @@ function onJobsAction(e){
     }
   }
 }
+
+document.addEventListener('click', (e)=>{
+  if (e.target && e.target.id === 'btn-add-material'){
+    const nameEl = document.getElementById('add-material-name');
+    const qtyEl = document.getElementById('add-material-qty');
+    if (!nameEl) return;
+    const name = nameEl.value.trim();
+    const qty = qtyEl ? qtyEl.value.trim() : '';
+    if (name){
+      state.materials.push({name, qty});
+      renderMaterials();
+      if (nameEl) nameEl.value='';
+      if (qtyEl) qtyEl.value='';
+      log('Material added: ' + name + (qty?(' ('+qty+')') : ''));
+    }
+  }
+});
