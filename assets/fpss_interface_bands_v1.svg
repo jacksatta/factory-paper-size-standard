@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="100%" height="100%" fill="#f8f9fb"/>
+<text x="800.0" y="86" text-anchor="middle" font-family="Inter, system-ui, Arial" font-size="44" fill="#181f26" font-weight="800">Interface Bands — Docking Margins</text>
+<text x="800.0" y="120" text-anchor="middle" font-family="Inter, system-ui, Arial" font-size="18" fill="#181f26" opacity="0.72">Locking, energy, data, and materials coupling zones between nested cells</text>
+<rect x="110.00" y="170.00" width="1102.76" height="780.00" rx="12" ry="12" fill="#eceef1" stroke="#181f26" stroke-opacity="0.10"/>
+<rect x="149.00" y="209.00" width="1024.76" height="702.00" rx="10" ry="10" fill="none" stroke="#4063a4" stroke-dasharray="6,8" stroke-width="2" opacity="0.85"/>
+<line x1="1212.8" y1="186.0" x2="1236.8" y2="196.0" stroke="#4063a4" stroke-width="2"/>
+<rect x="1236.8" y="178.0" width="480" height="44" rx="10" ry="10" fill="white" opacity="0.95" stroke="#181f26" stroke-opacity="0.06"/>
+<text x="1250.8" y="202.0" font-family="Inter, system-ui, Arial" font-size="18" font-weight="700" fill="#181f26">MACRO band — pallet locks, HV AC/DC, bulk feeds</text>
+<rect x="170.00" y="215.00" width="779.77" height="551.54" rx="12" ry="12" fill="#dee2e7" stroke="#181f26" stroke-opacity="0.10"/>
+<rect x="208.61" y="253.61" width="702.55" height="474.33" rx="10" ry="10" fill="none" stroke="#4063a4" stroke-dasharray="6,8" stroke-width="2" opacity="0.85"/>
+<line x1="949.8" y1="231.0" x2="973.8" y2="241.0" stroke="#4063a4" stroke-width="2"/>
+<rect x="973.8" y="223.0" width="480" height="44" rx="10" ry="10" fill="white" opacity="0.95" stroke="#181f26" stroke-opacity="0.06"/>
+<text x="987.8" y="247.0" font-family="Inter, system-ui, Arial" font-size="18" font-weight="700" fill="#181f26">HUMAN band — 48V DC, Ethernet/OPC‑UA, sheet/filament feeds</text>
+<rect x="230.00" y="260.00" width="194.94" height="137.89" rx="12" ry="12" fill="#d0d5dc" stroke="#181f26" stroke-opacity="0.10"/>
+<rect x="243.79" y="273.79" width="167.36" height="110.31" rx="10" ry="10" fill="none" stroke="#4063a4" stroke-dasharray="6,8" stroke-width="2" opacity="0.85"/>
+<line x1="424.9" y1="276.0" x2="448.9" y2="286.0" stroke="#4063a4" stroke-width="2"/>
+<rect x="448.9" y="268.0" width="480" height="44" rx="10" ry="10" fill="white" opacity="0.95" stroke="#181f26" stroke-opacity="0.06"/>
+<text x="462.9" y="292.0" font-family="Inter, system-ui, Arial" font-size="18" font-weight="700" fill="#181f26">MICRO band — LV power, precision alignment keys, reels/liquids</text>
+</svg>

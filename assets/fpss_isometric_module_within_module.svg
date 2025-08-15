@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="100%" height="100%" fill="#f8f9fb"/>
+<text x="800.0" y="86" text-anchor="middle" font-family="Inter, system-ui, Arial" font-size="44" fill="#181f26" font-weight="800">Module‑within‑Module — Human enclosing Micro</text>
+<text x="800.0" y="120" text-anchor="middle" font-family="Inter, system-ui, Arial" font-size="18" fill="#181f26" opacity="0.72">Scaled shells • Clear containment • Thin callouts</text>
+<polygon points="520.0,640.0 42.0,916.0 42.0,556.0 520.0,280.0" fill="#d0d5dc" opacity="0.35" stroke="#181f26" stroke-opacity="0.10"/>
+<polygon points="1309.8,1096.0 831.8,1372.0 831.8,1012.0 1309.8,736.0" fill="#dee2e7" opacity="0.35" stroke="#181f26" stroke-opacity="0.10"/>
+<polygon points="520.0,280.0 1309.8,736.0 831.8,1012.0 42.0,556.0" fill="#eceef1" opacity="0.35" stroke="#181f26" stroke-opacity="0.10"/>
+<polygon points="520.0,736.0 208.2,916.0 208.2,748.0 520.0,568.0" fill="#bec5cd" opacity="0.45" stroke="#181f26" stroke-opacity="0.10"/>
+<polygon points="1143.5,1096.0 831.8,1276.0 831.8,1108.0 1143.5,928.0" fill="#bec5cd" opacity="0.45" stroke="#181f26" stroke-opacity="0.10"/>
+<polygon points="520.0,568.0 1143.5,928.0 831.8,1108.0 208.2,748.0" fill="#bec5cd" opacity="0.45" stroke="#181f26" stroke-opacity="0.10"/>
+<polyline points="1094.1,1085.7 1094.1,346.0 1120.0,360.0" fill="none" stroke="#4063a4" stroke-width="2"/>
+<circle cx="1094.1" cy="1085.7" r="3.5" fill="#4063a4"/>
+<rect x="1130.0" y="336.0" width="360" height="48" rx="10" ry="10" fill="white" opacity="0.96" stroke="#181f26" stroke-opacity="0.06"/>
+<text x="1144.0" y="358.0" font-family="Inter, system-ui, Arial" font-size="18" font-weight="700" fill="#181f26">Human Module (A1)</text>
+<text x="1144.0" y="376.0" font-family="Inter, system-ui, Arial" font-size="14" fill="#181f26" opacity="0.82">Stations, safety envelope, power &amp; data backbone</text>
+<polyline points="672.8,1018.8 672.8,406.0 1120.0,420.0" fill="none" stroke="#4063a4" stroke-width="2"/>
+<circle cx="672.8" cy="1018.8" r="3.5" fill="#4063a4"/>
+<rect x="1130.0" y="396.0" width="360" height="48" rx="10" ry="10" fill="white" opacity="0.96" stroke="#181f26" stroke-opacity="0.06"/>
+<text x="1144.0" y="418.0" font-family="Inter, system-ui, Arial" font-size="18" font-weight="700" fill="#181f26">Micro Module (A5)</text>
+<text x="1144.0" y="436.0" font-family="Inter, system-ui, Arial" font-size="14" fill="#181f26" opacity="0.82">Fabrication island nested inside parent cell</text>
+</svg>
