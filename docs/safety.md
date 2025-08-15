@@ -1,1 +1,1 @@
-# Safety Note
+# Safety

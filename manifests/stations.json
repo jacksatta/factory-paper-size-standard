@@ -3,15 +3,5 @@
     "id": "Printer-A1",
     "kind": "printer",
     "port": "auto"
-  },
-  {
-    "id": "Arm-A1",
-    "kind": "arm",
-    "port": "auto"
-  },
-  {
-    "id": "QA-Scan-A1",
-    "kind": "scanner",
-    "port": "auto"
   }
 ]

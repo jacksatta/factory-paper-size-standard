@@ -1,1 +1,1 @@
-# placeholder bridge script (full version included in P0 package earlier)
+# Bridge
