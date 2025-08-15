@@ -1,4 +1,47 @@
 {
-  "name": "Hello World",
-  "steps": []
+  "version": "1.0",
+  "job_id": "hello_world_micro_factory",
+  "profile": "HUMAN",
+  "energy": "solar_peak",
+  "material": "PETG",
+  "qa": "scan_max_dev<=0.5mm",
+  "stations": [
+    "Printer-A1"
+  ],
+  "steps": [
+    {
+      "op": "home",
+      "axes": "XYZ",
+      "id": 1
+    },
+    {
+      "op": "heat",
+      "tool": "extruder",
+      "temp_c": 215,
+      "id": 2
+    },
+    {
+      "op": "heat",
+      "tool": "bed",
+      "temp_c": 70,
+      "id": 3
+    },
+    {
+      "op": "print",
+      "coupon": "A5_test_v1",
+      "duration_s": 30,
+      "id": 4
+    },
+    {
+      "op": "cool",
+      "duration_s": 5,
+      "id": 5
+    },
+    {
+      "op": "scan",
+      "mode": "lidar",
+      "max_dev_mm": 0.5,
+      "id": 6
+    }
+  ]
 }

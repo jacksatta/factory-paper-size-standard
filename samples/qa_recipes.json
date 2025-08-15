@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "recipes": [
+    {
+      "id": "scan_max_dev_0_5",
+      "type": "dimensional",
+      "max_dev_mm": 0.5
+    },
+    {
+      "id": "scan_max_dev_0_8",
+      "type": "dimensional",
+      "max_dev_mm": 0.8
+    }
+  ]
+}

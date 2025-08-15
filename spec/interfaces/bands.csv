@@ -1,0 +1,4 @@
+band,min_offset_mm,width_mm,notes
+MACRO,40,120,Site services and pallet locks
+HUMAN,24,80,Power 48V DC + Ethernet/OPC-UA + materials feeds
+MICRO,12,48,Low-voltage + precision keys + micro-fluids

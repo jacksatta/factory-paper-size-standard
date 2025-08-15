@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "stations": [
+    {
+      "id": "Printer-A1",
+      "type": "printer",
+      "transport": "serial",
+      "port": "COM3",
+      "baud": 115200
+    },
+    {
+      "id": "CNC-A1",
+      "type": "cnc",
+      "transport": "serial"
+    }
+  ]
+}
