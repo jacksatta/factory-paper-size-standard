@@ -39,3 +39,26 @@
   .tabs{display:none}
   .hamburger{display:block}
 }
+
+
+/* v1.3 tweaks */
+/* Logs: fixed height with scroll */
+.logs{max-height:180px;min-height:140px;overflow:auto}
+
+/* Compact status pill */
+.pill{font-size:.86em;padding:5px 9px;border-radius:999px;border:1px solid #cbd5e1;background:#eef2f7}
+
+/* Closeable meta tags */
+.pill.meta{display:inline-flex;align-items:center;gap:6px;padding:5px 10px}
+.pill .close{display:inline-block;width:16px;height:16px;line-height:16px;text-align:center;border-radius:50%;background:#e2e8f0;color:#475569;font-weight:700;cursor:pointer}
+.pill .close:hover{background:#cbd5e1}
+
+/* Buttons: consistent sizing + subtle active */
+.btn{height:40px;display:inline-flex;align-items:center;gap:6px}
+.btn:active{transform:translateY(1px)}
+
+/* Align buttons in jobs table */
+.table td:last-child{display:flex;gap:8px;align-items:center}
+
+/* Smaller status capsule in Jobs */
+.table .pill{background:#f1f5f9;border-color:#e2e8f0}

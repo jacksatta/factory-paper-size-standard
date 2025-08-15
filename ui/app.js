@@ -249,6 +249,18 @@ window.addEventListener("DOMContentLoaded", () => {
   renderJobs();
 });
 
+// Closeable defaults (meta tags)
+document.addEventListener("click", (e)=>{
+  const close = e.target.closest(".close");
+  if (close && close.parentElement && close.parentElement.classList.contains("meta")) {
+    const pill = close.parentElement;
+    const key = pill.dataset.key || "default";
+    pill.remove();
+    log("Default removed: " + key);
+  }
+});
+
+
 function onJobsAction(e){
   const t = e.target;
   const id = t.dataset.id;
