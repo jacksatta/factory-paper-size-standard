@@ -10,6 +10,27 @@ Open, modular standards for building **micro‑tools → tools → factories** a
 3. Click **RUN** — watch the console and the highlighted running job.
 4. (Optional) Connect real hardware via **serial**: see `docs/tutorials/connect_real_hardware_serial.md` and `drivers/serial/fpss_serial.py`.
 
+---
+
+## Visual Standards
+
+### Nested Sizes (proportional cascade)
+<img src="assets/fpss_nested_staggered_v4.jpeg" alt="FPSS nested sizes, staggered A-series cascade" width="960">
+
+> **Figure 1:** FPSS nested sizes (A‑series cascade). Smaller modules nest inside larger shells while reserving interface bands.
+
+### Isometric — Module within Module
+<img src="assets/fpss_isometric_module_within_module.jpeg" alt="Isometric diagram of a micro module nested inside a human-scale module" width="960">
+
+> **Figure 2:** Isometric view of a **micro** module docked in a **human** module—helps plan clearance, docking bands, and service routing.
+
+### Docking Bands (margins)
+<img src="assets/fpss_interface_bands_v1.jpeg" alt="Docking bands showing reserved margins for power, comms, and materials" width="960">
+
+> **Figure 3:** Interface bands reserve space for power, comms, and materials to avoid interference between modules.
+
+---
+
 ## Repository layout
 - **`/spec/`** — human‑readable standards.
   - `visual/` — diagram conventions and grid rules.
