@@ -1,3 +1,1 @@
-#!/usr/bin/env python3
-# FPSS Bridge stub
-print('Bridge starting...')
+# placeholder bridge script (full version included in P0 package earlier)

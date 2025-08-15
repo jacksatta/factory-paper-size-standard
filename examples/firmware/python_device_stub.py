@@ -1,1 +1,1 @@
-# Python device stub
+# Python device stub (see full version in P0 package)

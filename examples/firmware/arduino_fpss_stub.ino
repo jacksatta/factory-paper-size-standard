@@ -1,1 +1,1 @@
-// Arduino stub
+// Arduino stub (see full version in P0 package)

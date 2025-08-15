@@ -1,0 +1,32 @@
+{
+  "name": "Weekend Micro\u2011Factory Demo",
+  "energy": "grid",
+  "material": "N/A",
+  "qa": "0.5mm",
+  "steps": [
+    {
+      "target": "station/Printer-A1",
+      "command": "start",
+      "params": {
+        "speed": "normal"
+      }
+    },
+    {
+      "target": "station/Arm-A1",
+      "command": "home",
+      "params": {}
+    },
+    {
+      "target": "station/QA-Scan-A1",
+      "command": "scan",
+      "params": {
+        "mode": "dimensional"
+      }
+    },
+    {
+      "target": "station/Printer-A1",
+      "command": "stop",
+      "params": {}
+    }
+  ]
+}

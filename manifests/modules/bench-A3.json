@@ -1,0 +1,17 @@
+{
+  "moduleId": "bench-A3",
+  "size": "A3",
+  "stations": [
+    "Printer-A1",
+    "Arm-A1",
+    "QA-Scan-A1"
+  ],
+  "power": {
+    "input": "DC24V",
+    "maxW": 200
+  },
+  "io": {
+    "usb": 2,
+    "ethernet": 1
+  }
+}
