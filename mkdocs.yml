@@ -1,0 +1,14 @@
+site_name: Factory Paper Size Standard (FPSS)
+site_description: Modular hardware standards and UI for micro-tools to factories
+theme:
+  name: mkdocs
+nav:
+  - Overview: index.md
+  - Quick Start: quickstart.md
+  - UI: ui.md
+  - Adapters:
+      - Concepts: adapters_concepts.md
+      - Serial: adapters_serial.md
+      - WebSocket: adapters_websocket.md
+  - Schema: schema.md
+  - FAQ: faq.md
