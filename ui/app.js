@@ -79,6 +79,7 @@ function addJob(name) {
   const id = crypto.randomUUID();
   state.jobs.unshift({ id, name, created: new Date(), status: "New", steps: [] });
   renderJobs();
+rebuildDefaultTags();
   rebuildDefaultTags();
 }
 
@@ -276,6 +277,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   renderJobs();
+rebuildDefaultTags();
   rebuildDefaultTags();
 });
 
@@ -338,6 +340,7 @@ function onJobsAction(e){
   if (t.dataset.action === "del") {
     state.jobs.splice(idx,1);
     renderJobs();
+rebuildDefaultTags();
   rebuildDefaultTags();
   }
   if (t.dataset.action === "dup") {
@@ -349,6 +352,7 @@ function onJobsAction(e){
     if (newName) {
       state.jobs[idx].name = newName;
       renderJobs();
+rebuildDefaultTags();
   rebuildDefaultTags();
     }
   }
@@ -370,3 +374,30 @@ document.addEventListener('click', (e)=>{
     }
   }
 });
+
+// modal-defaults bindings
+(function(){
+  const modal = document.getElementById('modal-defaults');
+  const openBtn = document.getElementById('btn-edit-defaults');
+  if (openBtn && modal){
+    openBtn.addEventListener('click', ()=>{
+      document.getElementById('def-profile').value = state.defaults.profile || 'HUMAN';
+      document.getElementById('def-energy').value = state.defaults.energy || '';
+      document.getElementById('def-material').value = state.defaults.material || '';
+      document.getElementById('def-qa').value = state.defaults.qa || '';
+      modal.classList.add('open');
+    });
+    const closeBtn = document.getElementById('close-defaults');
+    if (closeBtn) closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+    const saveBtn = document.getElementById('save-defaults');
+    if (saveBtn) saveBtn.addEventListener('click', ()=>{
+      state.defaults.profile = document.getElementById('def-profile').value;
+      state.defaults.energy = document.getElementById('def-energy').value.trim();
+      state.defaults.material = document.getElementById('def-material').value.trim();
+      state.defaults.qa = document.getElementById('def-qa').value.trim();
+      rebuildDefaultTags();
+      modal.classList.remove('open');
+      log('Defaults saved.');
+    });
+  }
+})();
