@@ -1,1 +1,111 @@
-<!doctype html><meta charset=utf-8><title>FPSS UI</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FPSS UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">FPSS</div>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-view="dashboard">Dashboard</button>
+      <button class="tab" data-view="jobs">Jobs</button>
+      <button class="tab" data-view="stations">Stations</button>
+      <button class="tab" data-view="materials">Materials</button>
+      <button class="tab" data-view="qa">QA</button>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </header>
+
+  <main id="view-dashboard" class="view active">
+    <section class="card hero">
+      <h1>Factory Paper Size — UI Template</h1>
+      <p>Harmonized grid, calm monochrome palette, and a 3×3 control pad for FPSS tools.</p>
+    </section>
+
+    <section class="card">
+      <h2>Create Job Packet</h2>
+      <div class="row gap">
+        <input id="job-name" class="input" placeholder="Job name (e.g., SCARA-v1 Joint Stack)" />
+        <button id="btn-create" class="btn primary">CREATE</button>
+        <label class="btn" for="file-import">IMPORT .FPJ</label>
+        <input id="file-import" type="file" accept=".fpj,application/json" hidden>
+      </div>
+
+      <div class="subtle">
+        Defaults: <span class="pill">HUMAN</span>
+        <span class="pill">Energy: solar_peak</span>
+        <span class="pill">Material: PETG</span>
+        <span class="pill">QA: scan_max_dev ≤ 0.5mm</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Simulation</h3>
+      <div class="row gap align-center">
+        <span id="sim-status" class="status stopped">Stopped</span>
+        <button id="btn-run" class="btn primary">RUN</button>
+        <button id="btn-stop" class="btn ghost" disabled>STOP</button>
+        <div class="progress"><div id="progress-bar"></div></div>
+      </div>
+      <pre id="logs" class="logs" aria-live="polite"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Jobs</h2>
+      <div id="jobs-empty" class="empty">No jobs yet. Create or import a job to get started.</div>
+      <table id="jobs-table" class="table hidden">
+        <thead><tr><th>Name</th><th>Created</th><th>Status</th><th></th></tr></thead>
+        <tbody id="jobs-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <main id="view-jobs" class="view">
+    <section class="card">
+      <h2>Jobs</h2>
+      <div class="row gap">
+        <input id="filter" class="input" placeholder="Filter jobs…">
+      </div>
+      <table class="table">
+        <thead><tr><th>Name</th><th>Created</th><th>Status</th><th></th></tr></thead>
+        <tbody id="jobs-body-2"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <main id="view-stations" class="view">
+    <section class="card">
+      <h2>Stations</h2>
+      <ul class="stations" id="stations-list">
+        <!-- Filled via JS -->
+      </ul>
+    </section>
+  </main>
+
+  <main id="view-materials" class="view">
+    <section class="card">
+      <h2>Materials</h2>
+      <div class="row gap">
+        <input id="material-name" class="input" placeholder="Name (e.g., PETG)">
+        <button id="btn-add-material" class="btn">ADD</button>
+      </div>
+      <ul id="materials-list" class="list"></ul>
+    </section>
+  </main>
+
+  <main id="view-qa" class="view">
+    <section class="card">
+      <h2>QA</h2>
+      <button id="btn-export-qa" class="btn">EXPORT QA JSON</button>
+      <pre id="qa-output" class="logs"></pre>
+    </section>
+  </main>
+
+  <footer class="footer">FPSS UI v1.1 — responsive, keyboard shortcuts, import, run/stop, jobs & materials.</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
