@@ -78,7 +78,7 @@ function renderJobs() {
 function addJob(name) {
   const id = crypto.randomUUID();
   state.jobs.unshift({ id, name, created: new Date(), status: "New", steps: [] });
-  renderJobs();
+  renderJobs(); refreshSimUI();
 rebuildDefaultTags();
   rebuildDefaultTags();
 }
@@ -276,7 +276,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  renderJobs();
+  renderJobs(); refreshSimUI();
 rebuildDefaultTags();
   rebuildDefaultTags();
 });
@@ -339,7 +339,7 @@ function onJobsAction(e){
   if (idx === -1) return;
   if (t.dataset.action === "del") {
     state.jobs.splice(idx,1);
-    renderJobs();
+    renderJobs(); refreshSimUI();
 rebuildDefaultTags();
   rebuildDefaultTags();
   }
@@ -351,7 +351,7 @@ rebuildDefaultTags();
     const newName = prompt("Rename job:", state.jobs[idx].name);
     if (newName) {
       state.jobs[idx].name = newName;
-      renderJobs();
+      renderJobs(); refreshSimUI();
 rebuildDefaultTags();
   rebuildDefaultTags();
     }
@@ -401,3 +401,14 @@ document.addEventListener('click', (e)=>{
     });
   }
 })();
+
+function refreshSimUI(){
+  const st = document.getElementById('sim-status');
+  if (st){ st.textContent = state.paused ? 'Paused' : (state.running ? 'Running' : 'Stopped'); }
+  const stopBtn = document.getElementById('btn-stop');
+  if (stopBtn){
+    if (state.running && !state.paused){ stopBtn.textContent = 'PAUSE'; }
+    else if (state.running && state.paused){ stopBtn.textContent = 'CONTINUE'; }
+    else { stopBtn.textContent = 'STOP'; }
+  }
+}

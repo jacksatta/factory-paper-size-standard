@@ -102,3 +102,11 @@
 
 /* Tighter table container to avoid bleed */
 .section .table{width:100%;table-layout:auto}
+
+
+/* v1.7 polish */
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center}
+.btn.primary{font-weight:700}
+.table td.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.jobs-table td.name strong{font-weight:700}
+.jobs-table tr.running{background:rgba(48,77,145,0.06)}
