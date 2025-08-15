@@ -1,0 +1,1 @@
+export default { async connect(cfg){return {ok:true}}, async sendCommand(t,c,p){console.log('[SIM]',t,c,p);return {ok:true}}, async getStatus(){return {ts:Date.now(),stations:[]}}, async disconnect(){return {ok:true}}};
